@@ -1,0 +1,39 @@
+function toSnakeCase(text) {
+    return text
+        .replace(/([a-z])([A-Z])/g, '$1_$2') // Insert underscore between lowercase and uppercase
+        .replace(/[\s-]+/g, '_') // Replace spaces and hyphens with underscore
+        .toLowerCase(); // Convert to lowercase
+}
+
+module.exports = toSnakeCase;
+
+function toCamelCase(text) {
+    // Handle null or undefined
+    if (text === null || text === undefined) {
+        throw new Error('Input cannot be null or undefined');
+    }
+
+    // Convert to string and trim
+    const str = String(text).trim();
+
+    // Check if empty after trimming
+    if (str.length === 0) {
+        throw new Error('Input cannot be empty');
+    }
+
+    // Check if starts with a number
+    if (/^\d/.test(str)) {
+        throw new Error('Input cannot start with a number');
+    }
+
+    return str
+        .split(/[\s_-]+/) // Split by spaces, underscores, or hyphens
+        .map((word, index) => {
+            const lower = word.toLowerCase();
+            // Capitalize first letter of each word except the first
+            return index === 0 ? lower : lower.charAt(0).toUpperCase() + lower.slice(1);
+        })
+        .join('');
+}
+
+module.exports = { toSnakeCase, toCamelCase }; 
