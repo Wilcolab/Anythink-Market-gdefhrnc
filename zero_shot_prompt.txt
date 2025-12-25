@@ -36,4 +36,4 @@ function toCamelCase(text) {
         .join('');
 }
 
-module.exports = { toSnakeCase, toCamelCase };
+module.exports = { toSnakeCase, toCamelCase }; 

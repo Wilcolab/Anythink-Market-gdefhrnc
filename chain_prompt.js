@@ -23,4 +23,4 @@ function toKebabCase(input) {
         .replace(/-+/g, '-');           // Replace multiple hyphens with single hyphen
 }
 
-module.exports = toKebabCase;
+module.exports = toKebabCase; 
